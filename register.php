@@ -8,6 +8,7 @@
 
 // Los modulos incluidos son codigo "inyectado" en toda la pagina, van en cascada.
 include 'includes/classes/Account.php'; // Llama a la clase Account para su uso en esta pagina y otros modulos
+include 'includes/classes/Constants.php';
 $account = new Account(); // Creacion de nueva instancia cuenta
 include 'includes/handlers/register-handler.php'; // Ejecuta acciones de registro si estas son solicitadas
 include 'includes/handlers/login-handler.php'; // Ejecuta acciones de inicio de sesion. TODO
@@ -43,23 +44,23 @@ include 'includes/handlers/login-handler.php'; // Ejecuta acciones de inicio de 
         <form id="registerForm" action="register.php" method="POST">
             <h2>Create your free account</h2>
             <p>
-            <?=$account->getError("Your username must be between 5 and 25 characters.");?>
+            <?=$account->getError(Constants::$usernameCharacters);?>
             <label for="username">Username</label>
             <input type="text" name="username" id="username" placeholder="e.g. bartSimspon" required>
             </p>
             <p>
-            <?=$account->getError("Your first name must be between 2 and 25 characters.");?>
+            <?=$account->getError(Constants::$firstNameCharacters);?>
             <label for="firstName">First Name</label>
             <input type="text" name="firstName" id="firstName" placeholder="e.g. Bart" required>
             </p>
             <p>
-            <?=$account->getError("Your last name must be between 2 and 25 characters.");?>
+            <?=$account->getError(Constants::$lastNameCharacters);?>
             <label for="lastName">Last Name</label>
             <input type="text" name="lastName" id="lastName" placeholder="e.g. Simpson" required>
             </p>
             <p>
-            <?=$account->getError("Your emails don't match");?>
-            <?=$account->getError("Email is invalid");?>
+            <?=$account->getError(Constants::$emailsDoNotMatch);?>
+            <?=$account->getError(Constants::$emailInvalid);?>
             <label for="email">E-Mail</label>
             <input type="email" name="email" id="email" placeholder="e.g. bart.simpson@example.com" required>
             </p>
@@ -68,9 +69,9 @@ include 'includes/handlers/login-handler.php'; // Ejecuta acciones de inicio de 
             <input type="email" name="email2" id="email2" placeholder="e.g. bart.simpson@example.com" required>
             </p>
             <p>
-            <?=$account->getError("Your passwords don't match");?>
-            <?=$account->getError("Your password can only contain numbers and letters");?>
-            <?=$account->getError("Your password must be between 5 and 30 characters.");?>
+            <?=$account->getError(Constants::$passwordsDoNotMatch);?>
+            <?=$account->getError(Constants::$passwordsNotAlphanumeric);?>
+            <?=$account->getError(Constants::$passwordsCharacters);?>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
             </p>

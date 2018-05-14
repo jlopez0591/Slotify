@@ -44,7 +44,7 @@ class Account
     {
         // Valido largo del username
         if (strlen($un) > 25 || strlen($un) < 5) {
-            array_push($this->errorArray, "Your username must be between 5 and 25 characters.");
+            array_push($this->errorArray, Constants::$usernameCharacters);
             return;
         }
         // TODO: check if username exists.
@@ -54,7 +54,7 @@ class Account
     {
         // Valida largo del nombre
         if (strlen($fn) > 25 || strlen($fn) < 2) {
-            array_push($this->errorArray, "Your first name must be between 2 and 25 characters.");
+            array_push($this->errorArray, Constants::$firstNameCharacters);
             return;
         }
 
@@ -64,7 +64,7 @@ class Account
     {
         // Validar largo del apellido
         if (strlen($ln) > 25 || strlen($ln) < 2) {
-            array_push($this->errorArray, "Your last name must be between 2 and 25 characters.");
+            array_push($this->errorArray, Constants::$lastNameCharacters);
             return;
         }
 
@@ -74,13 +74,13 @@ class Account
     {
         // Valida que los password sean iguales
         if ($em != $em2) {
-            array_push($this->errorArray, "Your emails don't match");
+            array_push($this->errorArray, Constants::$emailsDoNotMatch);
             return;
         }
 
         // Utiliza una constante del lenguaje para validar el email.
         if (!filter_var($em, FILTER_VALIDATE_EMAIL)) {
-            array_push($this->errorArray, "Email is invalid");
+            array_push($this->errorArray, Constants::$emailInvalid);
             return;
         }
 
@@ -91,19 +91,19 @@ class Account
     {
         // Valida que los passwords sean iguales
         if ($pw != $pw2) {
-            array_push($this->errorArray, "Your passwords don't match");
+            array_push($this->errorArray, Constants::$passwordsDoNotMatch);
             return;
         }
 
         // Valida que sean valores alfanumericos
         if (preg_match('/[^A-Za-z0-9]', $pw)) { // Si no es alfanumerico.
-            array_push($this->errorArray, "Your password can only contain numbers and letters");
+            array_push($this->errorArray, Constants::$passwordsNotAlphanumeric);
             return;
         }
 
         // Valida el largo del password
         if (strlen($ln) > 30 || strlen($ln) < 5) {
-            array_push($this->errorArray, "Your password must be between 5 and 30 characters.");
+            array_push($this->errorArray, Constants::$passwordsCharacters);
             return;
         }
     }
