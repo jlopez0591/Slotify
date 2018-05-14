@@ -1,14 +1,16 @@
 <?php
 
-if (isset($_POST['loginButton'])) {
-    // echo "Login button was pressed.";
+/**
+ * Pagina de registro.
+ *
+ * Contiene los formularios de inicio de sesion y registro de nuevo usuario.
+ */
 
-}
-
-if (isset($_POST['registerButton'])) {
-    // echo "Register button was pressed.";
-
-}
+// Los modulos incluidos son codigo "inyectado" en toda la pagina, van en cascada.
+include 'includes/classes/Account.php'; // Llama a la clase Account para su uso en esta pagina y otros modulos
+$account = new Account(); // Creacion de nueva instancia cuenta
+include 'includes/handlers/register-handler.php'; // Ejecuta acciones de registro si estas son solicitadas
+include 'includes/handlers/login-handler.php'; // Ejecuta acciones de inicio de sesion. TODO
 
 ?>
 
@@ -60,11 +62,6 @@ if (isset($_POST['registerButton'])) {
             <label for="email2">Confirm E-Mail</label>
             <input type="email" name="email2" id="email2" placeholder="e.g. bart.simpson@example.com" required>
             </p>
-
-
-
-
-
             <p>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
