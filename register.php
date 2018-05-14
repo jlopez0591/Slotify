@@ -43,18 +43,23 @@ include 'includes/handlers/login-handler.php'; // Ejecuta acciones de inicio de 
         <form id="registerForm" action="register.php" method="POST">
             <h2>Create your free account</h2>
             <p>
+            <?=$account->getError("Your username must be between 5 and 25 characters.");?>
             <label for="username">Username</label>
             <input type="text" name="username" id="username" placeholder="e.g. bartSimspon" required>
             </p>
             <p>
+            <?=$account->getError("Your first name must be between 2 and 25 characters.");?>
             <label for="firstName">First Name</label>
             <input type="text" name="firstName" id="firstName" placeholder="e.g. Bart" required>
             </p>
             <p>
+            <?=$account->getError("Your last name must be between 2 and 25 characters.");?>
             <label for="lastName">Last Name</label>
             <input type="text" name="lastName" id="lastName" placeholder="e.g. Simpson" required>
             </p>
             <p>
+            <?=$account->getError("Your emails don't match");?>
+            <?=$account->getError("Email is invalid");?>
             <label for="email">E-Mail</label>
             <input type="email" name="email" id="email" placeholder="e.g. bart.simpson@example.com" required>
             </p>
@@ -63,10 +68,14 @@ include 'includes/handlers/login-handler.php'; // Ejecuta acciones de inicio de 
             <input type="email" name="email2" id="email2" placeholder="e.g. bart.simpson@example.com" required>
             </p>
             <p>
+            <?=$account->getError("Your passwords don't match");?>
+            <?=$account->getError("Your password can only contain numbers and letters");?>
+            <?=$account->getError("Your password must be between 5 and 30 characters.");?>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
             </p>
             <p>
+
             <label for="password2">Confirm Password</label>
             <input type="password" name="password2" id="password2" required>
             </p>

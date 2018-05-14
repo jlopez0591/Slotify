@@ -22,6 +22,22 @@ class Account
         $this->validateEmails($em, $em2);
         $this->validateEmails($pw, $pw2);
 
+        if (empty($this->errorArray)) {
+            // si errorArray esta vacio
+            // Inserta en la base de datos.
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function getError($error)
+    {
+        if (!in_array($error, $this->errorArray)) {
+            $error = "";
+        }
+        return "<span class='errorMessage'>$error</span>";
     }
 
     private function validateUsername($un)
@@ -37,7 +53,7 @@ class Account
     private function validateFirstName($fn)
     {
         // Valida largo del nombre
-        if (strlen($fn) > 25 || strlen($fn) < 5) {
+        if (strlen($fn) > 25 || strlen($fn) < 2) {
             array_push($this->errorArray, "Your first name must be between 2 and 25 characters.");
             return;
         }
@@ -47,7 +63,7 @@ class Account
     private function validateLastName($ln)
     {
         // Validar largo del apellido
-        if (strlen($ln) > 25 || strlen($ln) < 5) {
+        if (strlen($ln) > 25 || strlen($ln) < 2) {
             array_push($this->errorArray, "Your last name must be between 2 and 25 characters.");
             return;
         }
