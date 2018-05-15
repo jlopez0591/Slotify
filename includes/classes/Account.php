@@ -20,7 +20,7 @@ class Account
         $this->validateFirstName($fn);
         $this->validateLastName($ln);
         $this->validateEmails($em, $em2);
-        $this->validateEmails($pw, $pw2);
+        $this->validatePasswords($pw, $pw2);
 
         if (empty($this->errorArray)) {
             // si errorArray esta vacio
